@@ -20,7 +20,10 @@ cd "Your Site"
 # 2. Install dependencies (first run only)
 docker compose run --rm jigsaw sh -c "composer install && npm install"
 
-# 3. Start everything
+# 3. Set APP_URL in .env file (https://jigsaw.tighten.com/docs/local-development/)
+echo "APP_URL=http://localhost:8000" > .env
+
+# 4. Start everything
 docker compose up --build
 ```
 
