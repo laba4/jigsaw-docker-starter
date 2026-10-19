@@ -1,0 +1,18 @@
+services:
+  jigsaw:
+    container_name: jigsaw
+    build:
+      context: .
+      dockerfile: .docker/dev/Dockerfile
+    working_dir: /app
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+    ports:
+      - "8000:8000"
+      - "5173:5173"
+    command: sh -c "php vendor/bin/jigsaw serve --host=0.0.0.0 & npm run dev -- --host 0.0.0.0"
+    init: true
+
+volumes:
+  node_modules:
